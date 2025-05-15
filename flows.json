@@ -1,0 +1,399 @@
+[
+    {
+        "id": "c1d36a741312f339",
+        "type": "tab",
+        "label": "Flow 1",
+        "disabled": false,
+        "info": "",
+        "env": []
+    },
+    {
+        "id": "e78dc0497ea32638",
+        "type": "serial in",
+        "z": "c1d36a741312f339",
+        "name": "",
+        "serial": "1ee26e41f6eb5363",
+        "x": 50,
+        "y": 620,
+        "wires": [
+            [
+                "94d5a431d85364f0"
+            ]
+        ]
+    },
+    {
+        "id": "94d5a431d85364f0",
+        "type": "json",
+        "z": "c1d36a741312f339",
+        "name": "",
+        "property": "payload",
+        "action": "",
+        "pretty": false,
+        "x": 230,
+        "y": 620,
+        "wires": [
+            [
+                "76d9aafc82dccf9c",
+                "defa672030207d0f",
+                "3a632e185c5f8351",
+                "6cceeb1ef4f10490",
+                "e0a62239a8382ce5",
+                "a2605c31fb1ec787"
+            ]
+        ]
+    },
+    {
+        "id": "5054f58dc23d7c85",
+        "type": "ui_gauge",
+        "z": "c1d36a741312f339",
+        "name": "",
+        "group": "92e7b9a744846fe0",
+        "order": 2,
+        "width": 0,
+        "height": 0,
+        "gtype": "wave",
+        "title": "Umidade",
+        "label": "umi",
+        "format": "{{value}}",
+        "min": 0,
+        "max": "100",
+        "colors": [
+            "#00b500",
+            "#e6e600",
+            "#ca3838"
+        ],
+        "seg1": "",
+        "seg2": "",
+        "diff": false,
+        "className": "",
+        "x": 600,
+        "y": 800,
+        "wires": []
+    },
+    {
+        "id": "d2cc439a5acded09",
+        "type": "ui_gauge",
+        "z": "c1d36a741312f339",
+        "name": "",
+        "group": "92e7b9a744846fe0",
+        "order": 1,
+        "width": 0,
+        "height": 0,
+        "gtype": "wave",
+        "title": "Temperatura",
+        "label": "C°",
+        "format": "{{value}}",
+        "min": 0,
+        "max": "100",
+        "colors": [
+            "#00b500",
+            "#e6e600",
+            "#ca3838"
+        ],
+        "seg1": "",
+        "seg2": "",
+        "diff": false,
+        "className": "",
+        "x": 610,
+        "y": 720,
+        "wires": []
+    },
+    {
+        "id": "16b0eb251639fe96",
+        "type": "ui_gauge",
+        "z": "c1d36a741312f339",
+        "name": "",
+        "group": "92e7b9a744846fe0",
+        "order": 0,
+        "width": 0,
+        "height": 0,
+        "gtype": "wave",
+        "title": "distancia",
+        "label": "m",
+        "format": "{{value}}",
+        "min": 0,
+        "max": "300",
+        "colors": [
+            "#00b500",
+            "#e6e600",
+            "#ca3838"
+        ],
+        "seg1": "",
+        "seg2": "",
+        "diff": false,
+        "className": "",
+        "x": 600,
+        "y": 660,
+        "wires": []
+    },
+    {
+        "id": "76d9aafc82dccf9c",
+        "type": "change",
+        "z": "c1d36a741312f339",
+        "name": "",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "payload.Distancia",
+                "tot": "msg"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 400,
+        "y": 680,
+        "wires": [
+            [
+                "16b0eb251639fe96",
+                "b49a4703492db4de"
+            ]
+        ]
+    },
+    {
+        "id": "defa672030207d0f",
+        "type": "change",
+        "z": "c1d36a741312f339",
+        "name": "",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "payload.Temperatura",
+                "tot": "msg"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 420,
+        "y": 740,
+        "wires": [
+            [
+                "d2cc439a5acded09",
+                "b49a4703492db4de"
+            ]
+        ]
+    },
+    {
+        "id": "3a632e185c5f8351",
+        "type": "change",
+        "z": "c1d36a741312f339",
+        "name": "",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "payload.Umidade",
+                "tot": "msg"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 420,
+        "y": 800,
+        "wires": [
+            [
+                "5054f58dc23d7c85",
+                "b49a4703492db4de"
+            ]
+        ]
+    },
+    {
+        "id": "e311db563c36274a",
+        "type": "mqtt out",
+        "z": "c1d36a741312f339",
+        "name": "Leitor",
+        "topic": "fiap/iot/1ESPR/alepedroenzo/dhtultra",
+        "qos": "",
+        "retain": "",
+        "respTopic": "",
+        "contentType": "",
+        "userProps": "",
+        "correl": "",
+        "expiry": "",
+        "broker": "a960a06e89c702d8",
+        "x": 650,
+        "y": 920,
+        "wires": []
+    },
+    {
+        "id": "b49a4703492db4de",
+        "type": "json",
+        "z": "c1d36a741312f339",
+        "name": "",
+        "property": "payload",
+        "action": "",
+        "pretty": false,
+        "x": 510,
+        "y": 940,
+        "wires": [
+            [
+                "e311db563c36274a"
+            ]
+        ]
+    },
+    {
+        "id": "6cceeb1ef4f10490",
+        "type": "function",
+        "z": "c1d36a741312f339",
+        "name": "Distancia",
+        "func": "msg.headers = {\n    'Device-Token':'89bc4754-73d5-4462-aecc-73e5aa714556',\n    'Content-Type':'application/json'\n};\n\nvar action = [\n    {\n        'variable':'Distancia',\n        'unit':'cm',\n        'value':msg.payload.Distancia,\n    }\n]\n\nmsg.payload = action\n\nreturn msg;\n",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 400,
+        "y": 620,
+        "wires": [
+            [
+                "727d418d508ca5cd"
+            ]
+        ]
+    },
+    {
+        "id": "727d418d508ca5cd",
+        "type": "http request",
+        "z": "c1d36a741312f339",
+        "name": "",
+        "method": "POST",
+        "ret": "txt",
+        "paytoqs": "ignore",
+        "url": "https://api.tago.io/data",
+        "tls": "",
+        "persist": false,
+        "proxy": "",
+        "insecureHTTPParser": false,
+        "authType": "",
+        "senderr": false,
+        "headers": [],
+        "x": 650,
+        "y": 580,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "e0a62239a8382ce5",
+        "type": "function",
+        "z": "c1d36a741312f339",
+        "name": "Umidade",
+        "func": "msg.headers = {\n    'Device-Token':'89bc4754-73d5-4462-aecc-73e5aa714556',\n    'Content-Type':'application/json'\n};\n\nvar action = [\n    {\n        'variable':'Umidade',\n        'unit':'umi',\n        'value':msg.payload.Umidade,\n    }\n]\n\nmsg.payload = action\n\nreturn msg;\n",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 400,
+        "y": 580,
+        "wires": [
+            [
+                "727d418d508ca5cd"
+            ]
+        ]
+    },
+    {
+        "id": "a2605c31fb1ec787",
+        "type": "function",
+        "z": "c1d36a741312f339",
+        "name": "Temperatura",
+        "func": "msg.headers = {\n    'Device-Token':'89bc4754-73d5-4462-aecc-73e5aa714556',\n    'Content-Type':'application/json'\n};\n\nvar action = [\n    {\n        'variable':'Temperatura',\n        'unit':'C°',\n        'value':msg.payload.Temperatura,\n    }\n]\n\nmsg.payload = action\n\nreturn msg;\n",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 410,
+        "y": 540,
+        "wires": [
+            [
+                "727d418d508ca5cd"
+            ]
+        ]
+    },
+    {
+        "id": "1ee26e41f6eb5363",
+        "type": "serial-port",
+        "name": "",
+        "serialport": "COM6",
+        "serialbaud": "9600",
+        "databits": "8",
+        "parity": "none",
+        "stopbits": "1",
+        "waitfor": "",
+        "dtr": "none",
+        "rts": "none",
+        "cts": "none",
+        "dsr": "none",
+        "newline": "\\n",
+        "bin": "false",
+        "out": "char",
+        "addchar": "",
+        "responsetimeout": "10000"
+    },
+    {
+        "id": "92e7b9a744846fe0",
+        "type": "ui_group",
+        "name": "Default",
+        "tab": "88a1e6e798d4f98b",
+        "order": 1,
+        "disp": true,
+        "width": "6",
+        "collapse": false,
+        "className": ""
+    },
+    {
+        "id": "a960a06e89c702d8",
+        "type": "mqtt-broker",
+        "name": "",
+        "broker": "mqtt-dashboard.com",
+        "port": "1883",
+        "clientid": "",
+        "autoConnect": true,
+        "usetls": false,
+        "protocolVersion": "4",
+        "keepalive": "60",
+        "cleansession": true,
+        "autoUnsubscribe": true,
+        "birthTopic": "",
+        "birthQos": "0",
+        "birthRetain": "false",
+        "birthPayload": "",
+        "birthMsg": {},
+        "closeTopic": "",
+        "closeQos": "0",
+        "closeRetain": "false",
+        "closePayload": "",
+        "closeMsg": {},
+        "willTopic": "",
+        "willQos": "0",
+        "willRetain": "false",
+        "willPayload": "",
+        "willMsg": {},
+        "userProps": "",
+        "sessionExpiry": ""
+    },
+    {
+        "id": "88a1e6e798d4f98b",
+        "type": "ui_tab",
+        "name": "Home",
+        "icon": "dashboard",
+        "disabled": false,
+        "hidden": false
+    }
+]
